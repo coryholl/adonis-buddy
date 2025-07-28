@@ -1,0 +1,145 @@
+# Copyright (C) 2024 Cory Jon Hollingsworth
+#
+# This file is part of Adonis Buddy.
+#
+# Adonis Buddy is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Adonis Buddy.  If not, see <https://www.gnu.org/licenses/>.
+<CompositionMeasurements>:
+    orientation: 'vertical'
+    FloatLayout:
+        MDBoxLayout:
+            orientation: 'vertical'
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: 0.1
+                Label:
+                    size_hint_x: 0.2
+                    text: 'DOB:'
+                    font_size: window_height // 30
+                Label:
+                    id: birth_date_id
+                    size_hint_x: 0.6
+                    font_size: window_height // 30
+                    text: root.dob_string
+                MDIconButton:
+                    id: calendar_button_id
+                    size_hint_x: 0.2
+                    icon: 'calendar-search'
+                    on_release: root.select_birth_date()
+                    icon_size: window_height // 19
+            MDBoxLayout:
+                id: height_container_id
+                orientation: 'horizontal'
+                size_hint_y: 0.1
+                WorkoutTextField:
+                    id: height_foot_id
+                    field_name: 'height_foot_id'
+                    size_hint_x: 0.4
+                    hint_text: 'FT'
+                    font_size: window_height // 30
+                    input_field_type: 'int'
+                    input_filter: 'int'
+                    on_focus: root.set_focus(args[0])
+                WorkoutTextField:
+                    id: height_inch_id
+                    field_name: 'height_inch_id'
+                    size_hint_x: 0.4
+                    hint_text: 'IN'
+                    font_size: window_height // 30
+                    input_field_type: 'float'
+                    input_filter: 'float'
+                    on_focus: root.set_focus(args[0])
+                MDFillRoundFlatIconButton:
+                    id: height_unit_id
+                    size_hint_x: 0.2
+                    icon: 'ruler'
+                    icon_color: (1, 1, 1, 1)
+                    icon_size: window_height // 19
+                    md_bg_color: (0.35, 0.35, 0.35, 1)
+                    text: 'in'
+                    text_color: (1, 1, 1, 1)
+                    on_release: root.toggle_height_unit_button_press()
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: 0.1
+                WorkoutTextField:
+                    id: weight_id
+                    field_name: 'weight_id'
+                    size_hint_x: 0.8
+                    hint_text: 'WEIGHT'
+                    font_size: window_height // 30
+                    input_field_type: 'float'
+                    input_filter: 'float'
+                    on_focus: root.set_focus(args[0])
+                MDFillRoundFlatIconButton:
+                    id: weight_unit_id
+                    size_hint_x: 0.2
+                    icon: 'weight-pound'
+        #           icon: 'weight-kilogram'
+                    icon_color: (1, 1, 1, 1)
+                    icon_size: window_height // 19
+                    md_bg_color: (0.35, 0.35, 0.35, 1)
+                    text: 'lbs'
+                    text_color: (1, 1, 1, 1)
+                    on_release: root.toggle_weight_unit_button_press()
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: 0.1
+                WorkoutTextField:
+                    id: body_fat_measurement_id
+                    size_hint_x: 0.3
+                    field_name: 'body_fat_measurement_id'
+                    hint_text: '% BODYFAT'
+                    font_size: window_height // 30
+                    input_field_type: 'float'
+                    input_filter: 'float'
+                    on_focus: root.set_focus(args[0])
+                WorkoutTextField:
+                    id: body_fat_measurement_type_id
+                    size_hint_x: 0.7
+                    field_name: 'body_fat_measurement_type_id'
+                    hint_text: 'MEASURE METHOD'
+                    font_size: window_height // 30
+                    input_field_type: 'text'
+                    on_focus: root.set_focus(args[0])
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: 0.1
+                WorkoutTextField:
+                    id: heart_rate_id
+                    size_hint_x: 1
+                    field_name: 'heart_rate_id'
+                    hint_text: 'HEART BPM'
+                    font_size: window_height // 30
+                    input_field_type: 'float'
+                    input_filter: 'float'
+                    on_focus: root.set_focus(args[0])
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: 0.1
+                Widget:
+                MDIconButton:
+                    icon: 'notebook-edit'
+                    icon_size: window_height // 19
+                    on_release: root.save_metrics()
+                Widget:
+            Widget:
+                size_hint_y: 0.4
+        AnchorLayout:
+            id: keypad_button_container_id
+            anchor_x: 'right'
+            anchor_y: 'bottom'
+        AnchorLayout:
+            id: keypad_container_id
+            anchor_x: 'center'
+            anchor_y: 'bottom'

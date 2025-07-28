@@ -1,0 +1,82 @@
+# Copyright (C) 2024 Cory Jon Hollingsworth
+#
+# This file is part of Adonis Buddy.
+#
+# Adonis Buddy is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Adonis Buddy.  If not, see <https://www.gnu.org/licenses/>.
+<Calipers>:
+    orientation: 'vertical'
+    FloatLayout:
+        MDBoxLayout:
+            orientation: 'vertical'
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: 0.1
+                WorkoutTextField:
+                    id: chest_field_id
+                    field_name: 'chest_field_id'
+                    size_hint_x: 0.2
+                    hint_text: 'chest mm'
+                    font_size: window_height // 35
+                    input_filter: 'int'
+                    on_text: root.caliper_field_update('chest_field_id')
+                    on_focus: root.set_focus(args[0])
+                    input_field_type: 'int'
+                WorkoutTextField:
+                    id: waist_field_id
+                    field_name: 'waist_field_id'
+                    size_hint_x: 0.2
+                    hint_text: 'waist mm'
+                    font_size: window_height // 35
+                    input_filter: 'int'
+                    on_text: root.caliper_field_update('waist_field_id')
+                    on_focus: root.set_focus(args[0])
+                    input_field_type: 'int'
+                WorkoutTextField:
+                    id: thigh_field_id
+                    field_name: 'thigh_field_id'
+                    size_hint_x: 0.2
+                    hint_text: 'thigh mm'
+                    font_size: window_height // 35
+                    input_filter: 'int'
+                    on_text: root.caliper_field_update('thigh_field_id')
+                    on_focus: root.set_focus(args[0])
+                    input_field_type: 'int'
+                Label:
+                    id: percent_label_id
+                    size_hint_x: 0.2
+                    text: root.percentage
+                    font_size: window_height // 30
+                MDIconButton:
+                    id: save_calipers_id
+                    size_hint_x: 0.1
+                    icon: 'notebook-edit'
+                    icon_size: window_height // 19
+                    on_release: root.save_caliper_data()
+                    disabled: True
+            RelativeLayout:
+                id: caliper_selector_id
+                Image:
+                    id: select_image_id
+                    source: os.path.join('images', 'caliper-model.png')
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_touch_up: root.touched(args[0], args[1])
+        AnchorLayout:
+            id: keypad_button_container_id
+            anchor_x: 'right'
+            anchor_y: 'bottom'
+        AnchorLayout:
+            id: keypad_container_id
+            anchor_x: 'center'
+            anchor_y: 'bottom'

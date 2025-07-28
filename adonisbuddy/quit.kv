@@ -1,0 +1,32 @@
+<Quit>:
+    orientation: 'vertical'
+    Widget:
+    MDBoxLayout:
+        orientation: 'horizontal'
+        Widget:
+        MDIconButton:
+            id: maximize_button
+            icon: 'window-maximize'
+            icon_size: window_height // 10
+            on_release: root.maximize_button_press()
+        Widget:
+    MDBoxLayout:
+        orientation: 'horizontal'
+        Widget:
+        MDIconButton:
+            id: shutdown_button
+            icon: 'power'
+            icon_size: window_height // 10
+            on_release: root.shutdown_button_press()
+        Widget:
+    MDBoxLayout:
+        orientation: 'horizontal'
+        id: minimize_button_container
+        Widget:
+        MDIconButton:
+            id: minimize_button
+            icon: 'window-minimize'
+            icon_size: window_height // 10
+            on_release: root.minimize_button_press()
+        Widget:
+    Widget:

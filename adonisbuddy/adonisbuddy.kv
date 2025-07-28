@@ -1,0 +1,93 @@
+# Copyright (C) 2024 Cory Jon Hollingsworth
+#
+# This file is part of Adonis Buddy.
+#
+# Adonis Buddy is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Adonis Buddy.  If not, see <https://www.gnu.org/licenses/>.
+#:kivy 2.2.0
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+#:import pantheon_util pantheon_util
+#:include scale.kv
+#:include about.kv
+#:include body_measurements.kv
+#:include calipers.kv
+#:include composition_measurements.kv
+#:include config.kv
+#:include confirmation_popup_window.kv
+#:include drawer_clickable_item.kv
+#:include license_label.kv
+#:include loading.kv
+#:include measurement_history.kv
+#:include quit.kv
+#:include workout_text_field.kv
+
+MDScreen:
+    MDNavigationLayout:
+        ScreenManager:
+            id: screen_manager_id
+            transition: NoTransition(duration=0)
+            MDScreen:
+                id: root_screen
+                MDStackLayout:
+                    MDTopAppBar:
+                        id: app_title
+                        title: app.title
+                        elevation: 4
+                        pos_hint: {'top': 1}
+                        md_bg_color: (0.33, 0.33, 0.33, 1)
+                        specific_text_color: (1, 1, 1, 1)
+                        left_action_items: [['menu', pantheon_util.open_nav_drawer]]
+#                        disabled: app.load_disable
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDBoxLayout:
+                            id: screen_container
+                            orientation: 'vertical'
+                            Loading:
+                                id: calibration_screen
+                        Widget:
+                            size_hint_y: 0.1
+        MDNavigationDrawer:
+            id: nav_drawer
+            radius: (0, 16, 16, 0)
+            MDNavigationDrawerMenu:
+                id: nav_menu
+                DrawerClickableItem:
+                    id: body_measurements_id
+                    icon: 'tape-measure'
+                    text: 'Measurements'
+                    selected: True
+                DrawerClickableItem:
+                    id: composition_measurements_id
+                    icon: 'scale-balance'
+                    text: 'Composition'
+                DrawerClickableItem:
+                    id: caliper_calculators_id
+                    icon: 'ruler-square-compass'
+                    text: 'Calipers'
+                DrawerClickableItem:
+                    id: measurement_history_id
+                    icon: 'book-open-variant'
+                    text: 'History'
+                DrawerClickableItem:
+                    id: config_id
+                    icon: 'folder-wrench'
+                    text: 'Config'
+                DrawerClickableItem:
+                    id: about_id
+                    icon: 'information'
+                    text: 'About'
+                DrawerClickableItem:
+                    id: quit_id
+                    icon: 'power'
+                    text: 'Quit'

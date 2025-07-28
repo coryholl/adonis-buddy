@@ -1,0 +1,43 @@
+# Copyright (C) 2024 Cory Jon Hollingsworth
+#
+# This file is part of Adonis Buddy.
+#
+# Adonis Buddy is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Adonis Buddy.  If not, see <https://www.gnu.org/licenses/>.
+#:import os os
+
+<Config>:
+    orientation: 'vertical'
+    Widget:
+    MDBoxLayout:
+        id: control_panel_id
+        orientation: 'horizontal'
+        MDGridLayout:
+            cols: 1
+            id: software_keyboard_container_id
+            Widget:
+            MDBoxLayout:
+                orientation: 'horizontal'
+                Widget:
+                MDIconButton:
+                    id: software_keyboard_button_id
+                    icon: 'keyboard-outline'
+                    on_release: root.toggle_kv_button('software keyboard')
+                    icon_size: window_height // 19
+                Widget:
+            Label:
+                id: software_keyboard_label_id
+                halign: 'center'
+                text: 'software\nkeyboard on'
+                font_size: window_height // 40
+    Widget:
